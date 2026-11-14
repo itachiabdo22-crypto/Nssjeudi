@@ -1,0 +1,1058 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7dce8">
+<title>إلى رانيا | اعتذار من القلب</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+    --ink: #563849;
+    --rose: #e88eae;
+    --deep: #a94f78;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Cairo, sans-serif;
+    color: var(--ink);
+    background: #f9e8ee;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+#world {
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    direction: rtl;
+    scrollbar-width: none;
+}
+
+#world::-webkit-scrollbar {
+    display: none;
+}
+
+.page {
+    position: relative;
+    flex: 0 0 100vw;
+    width: 100vw;
+    height: 100dvh;
+    overflow: hidden;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(18px, 5vw, 65px);
+    isolation: isolate;
+}
+
+.page:before,
+.page:after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.page:before {
+    width: 48vw;
+    height: 48vw;
+    min-width: 260px;
+    min-height: 260px;
+    top: -18%;
+    right: -10%;
+    background: #ffffff55;
+}
+
+.page:after {
+    width: 42vw;
+    height: 42vw;
+    min-width: 240px;
+    min-height: 240px;
+    bottom: -20%;
+    left: -10%;
+    background: #eca0be33;
+}
+
+/* خلفيات الصفحات */
+
+.bg1 {
+    background: linear-gradient(135deg, #fbe8ef, #f8d4e2 48%, #f7e9e2);
+}
+
+.bg2 {
+    background: linear-gradient(135deg, #f9e7f1, #eadcf7 55%, #fce9e2);
+}
+
+.bg3 {
+    background: linear-gradient(135deg, #fce5e8, #f8d9d0 52%, #f7e9ed);
+}
+
+.bg4 {
+    background: linear-gradient(135deg, #e9e1f6, #f7e4ed 52%, #fce8e4);
+}
+
+.bg5 {
+    background: linear-gradient(135deg, #f8e1ec, #f9eee1 50%, #e8e1f3);
+}
+
+.bg6 {
+    background: linear-gradient(135deg, #fce8e9, #f4d6e6 55%, #e9e2f5);
+}
+
+.bg7 {
+    background: linear-gradient(135deg, #f9e8dd, #f7dce8 52%, #e8e2f5);
+}
+
+.bg8 {
+    background: linear-gradient(135deg, #f5dce7, #fff1e8 55%, #e7e1f4);
+}
+
+/* البطاقات */
+
+.glass {
+    width: min(900px, 100%);
+    max-height: 85%;
+    overflow: auto;
+    padding: clamp(23px, 5vw, 55px);
+    border: 1px solid #ffffffcc;
+    border-radius: 32px;
+    background: #ffffff9e;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 70px #854a671f;
+    text-align: center;
+    position: relative;
+}
+
+.kicker {
+    letter-spacing: 2px;
+    color: #a65b7e;
+    font-size: .78rem;
+    font-weight: 800;
+}
+
+h1, h2 {
+    font-family: Amiri, serif;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 12px 0 18px;
+}
+
+h1 {
+    font-size: clamp(2.7rem, 7vw, 5.5rem);
+    color: #9f4e73;
+}
+
+h2 {
+    font-size: clamp(2rem, 5vw, 3.3rem);
+    color: #9f4e73;
+}
+
+p {
+    font-size: clamp(1rem, 2vw, 1.16rem);
+    line-height: 2.1;
+    margin: 12px auto;
+    max-width: 720px;
+}
+
+.lead {
+    font-size: clamp(1.12rem, 2.5vw, 1.4rem);
+}
+
+.small {
+    font-size: .86rem;
+    color: #886477;
+}
+
+/* الأزرار */
+
+.btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 25px;
+    background: linear-gradient(135deg, #d979a0, #a95079);
+    color: white;
+    box-shadow: 0 10px 24px #a9507938;
+    transition: .25s;
+    margin: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn.alt {
+    background: #ffffffc9;
+    color: #9f4e73;
+    border: 1px solid #edc4d5;
+    box-shadow: none;
+}
+
+/* التنقل */
+
+.nav {
+    position: fixed;
+    z-index: 20;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: #ffffffbd;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 8px 28px #9c5c7920;
+}
+
+.nav button {
+    width: 42px;
+    height: 42px;
+    border: 0;
+    border-radius: 50%;
+    background: white;
+    color: #a95079;
+    font-size: 1.2rem;
+}
+
+.nav button:disabled {
+    opacity: .35;
+    cursor: default;
+}
+
+#counter {
+    font-size: .8rem;
+    min-width: 52px;
+    text-align: center;
+}
+
+.topbar {
+    position: fixed;
+    z-index: 20;
+    top: 15px;
+    right: 18px;
+    left: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
+}
+
+.topbar > * {
+    pointer-events: auto;
+}
+
+.pill {
+    border: 1px solid #ffffffa8;
+    background: #ffffffa8;
+    border-radius: 999px;
+    padding: 9px 14px;
+    color: #96516f;
+    backdrop-filter: blur(10px);
+}
+
+#musicBtn {
+    border: 0;
+}
+
+.progress {
+    position: fixed;
+    z-index: 21;
+    top: 0;
+    right: 0;
+    height: 4px;
+    background: #d979a0;
+    width: 12.5%;
+    transition: width .4s;
+}
+
+/* القلوب المتحركة */
+
+.hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0;
+    animation: floatUp linear forwards;
+    color: #d77c9f;
+    text-shadow: 0 4px 12px #fff8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0) scale(.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: .65;
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(35deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* الانتقالات */
+
+.reveal {
+    opacity: 0;
+    transform: translateX(35px);
+    transition: opacity .8s ease, transform .8s ease;
+}
+
+.page.active .reveal {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.delay1 {
+    transition-delay: .15s;
+}
+
+.delay2 {
+    transition-delay: .3s;
+}
+
+.delay3 {
+    transition-delay: .45s;
+}
+
+.divider {
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d77c9f, transparent);
+    margin: 20px auto;
+}
+
+.quote {
+    font-family: Amiri, serif;
+    font-size: clamp(1.35rem, 3vw, 2rem);
+    color: #99506f;
+}
+
+/* معرض الصور */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    max-width: 650px;
+    margin: 20px auto;
+}
+
+.photo {
+    aspect-ratio: 1;
+    border: 5px solid white;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f7cddd, #fff);
+    box-shadow: 0 10px 25px #89516c20;
+    transition: .3s;
+}
+
+.photo:hover {
+    transform: rotate(-2deg) scale(1.04);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.note {
+    background: #fff9;
+    border: 1px dashed #d98eac;
+    border-radius: 20px;
+    padding: 16px;
+    margin: 17px auto;
+    max-width: 680px;
+}
+
+.letter {
+    max-width: 700px;
+    margin: 18px auto;
+    padding: 25px;
+    background: #fffaf7;
+    border-radius: 8px 8px 24px 24px;
+    box-shadow: 0 12px 30px #8d53631c;
+    position: relative;
+}
+
+.letter:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 7px;
+    background: repeating-linear-gradient(90deg, #e9a5bd 0 14px, #fff 14px 28px);
+}
+
+.hidden {
+    display: none !important;
+}
+
+#finalMessage {
+    font-family: Amiri, serif;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    color: #a04f76;
+}
+
+/* اللمعات */
+
+.spark {
+    position: fixed;
+    pointer-events: none;
+    z-index: 30;
+    font-size: 18px;
+    animation: spark .9s ease-out forwards;
+}
+
+@keyframes spark {
+    to {
+        transform: translate(var(--x), var(--y)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* الهاتف */
+
+@media(max-width:600px) {
+    .glass {
+        border-radius: 24px;
+        padding: 23px 17px;
+        max-height: 83%;
+    }
+
+    .gallery {
+        gap: 8px;
+    }
+
+    .photo {
+        border-width: 3px;
+        border-radius: 14px;
+    }
+
+    .topbar {
+        top: 9px;
+        right: 9px;
+        left: 9px;
+    }
+
+    .nav {
+        bottom: 10px;
+    }
+
+    .page {
+        padding: 15px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *, *:before, *:after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+<div class="progress" id="progress"></div>
+
+<div class="topbar">
+    <div class="pill">♡ رسالة إلى رانيا</div>
+    <button class="pill" id="musicBtn">♫ تشغيل الموسيقى</button>
+</div>
+
+<audio id="music" src="music.mp3" loop preload="none"></audio>
+
+<main id="world">
+
+<!-- الصفحة الأولى -->
+
+<section class="page bg1 active">
+<div class="glass">
+
+<div class="kicker reveal">
+A LITTLE PLACE MADE WITH LOVE
+</div>
+
+<h1 class="reveal delay1">
+إلى رانيا…
+</h1>
+
+<p class="lead reveal delay2">
+هذه المرة لم أرد أن أكتفي بكلمة آسف عابرة
+<br>
+أردت أن أصنع لك مساحة صغيرة تحمل ما عجزت عن قوله كما ينبغي
+</p>
+
+<div class="divider reveal delay2"></div>
+
+<p class="small reveal delay3">
+خذي وقتك، وتصفّحيها بهدوء… صفحة بعد صفحة 🤍
+</p>
+
+<button class="btn reveal delay3" onclick="go(1);startMusic()">
+ابدئي الحكاية ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة الثانية -->
+
+<section class="page bg2">
+<div class="glass">
+
+<div class="kicker reveal">
+01 · قبل كل شيء
+</div>
+
+<h2 class="reveal delay1">
+أريد أن أبدأ بالحقيقة
+</h2>
+
+<p class="lead reveal delay2">
+أعرف أنني أخطأت في حقك، وليس مرة واحدة… بل تكرر الأمر أربعة أيام.
+</p>
+
+<p class="reveal delay3">
+كنتِ تنتظرينني في الليل، وكنت أنام بدل أن أكون حاضرًا معك.
+وفي اليوم الرابع طلبتُ منك أن تنتظريني حتى أدخل إلى المنزل وأكلمك،
+ثم غلبني النوم مرة أخرى.
+</p>
+
+<div class="note reveal delay3">
+لا أكتب هذا لأبحث عن عذر، ولا لأخفف من أثر ما حدث.
+أكتبه لأن الاعتراف الواضح هو أول ما يليق باعتذار صادق.
+</div>
+
+<button class="btn" onclick="go(2)">
+تابعي ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة الثالثة -->
+
+<section class="page bg3">
+<div class="glass">
+
+<div class="kicker reveal">
+02 · اعتذار بلا أعذار
+</div>
+
+<h2 class="reveal delay1">
+أنا آسف يا رانيا
+</h2>
+
+<p class="quote reveal delay2">
+«لم يكن قصدي أن أجرحك، لكن عدم قصدي لا يمحو ما شعرتِ به»
+</p>
+
+<p class="reveal delay3">
+قد أكون لم أخطط لأن أتركك تنتظرين،
+لكن النتيجة كانت أنك انتظرتِ ولم أكن عند وعدي.
+وهذا خطئي أنا، لا مسؤوليتك أنتِ.
+</p>
+
+<p class="reveal delay3">
+كان يجب أن أكون أكثر انتباهًا،
+وإذا شعرت أنني متعب أو أن النوم يغلبني،
+كان عليّ أن أخبرك مبكرًا بدل أن أتركك معلّقة بوعد.
+</p>
+
+<button class="btn" onclick="go(3)">
+تابعي ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة الرابعة -->
+
+<section class="page bg4">
+<div class="glass">
+
+<div class="kicker reveal">
+03 · رانيا كما أراها
+</div>
+
+<h2 class="reveal delay1">
+أنتِ لستِ مجرد وقت في يومي
+</h2>
+
+<p class="lead reveal delay2">
+أنتِ إنسانة لها حضورها الخاص…
+</p>
+
+<p class="reveal delay2">
+فيكِ جمال لا يقف عند الملامح؛
+فيكِ رقة تجعل التفاصيل الصغيرة ذات معنى،
+وقلب يستحق أن يُصغى إليه،
+وروح تترك أثرًا حتى في أبسط اللحظات.
+</p>
+
+<p class="reveal delay3">
+أحب طريقتك في الكلام،
+وتفاصيلك التي قد لا تنتبهين إليها،
+ووجودك الذي يجعل اليوم العادي أقل عادية.
+وأتمنى ألا أجعل تصرفًا مني يشعرك يومًا أنكِ أقل أهمية مما أنتِ عليه.
+</p>
+
+<div class="divider reveal delay3"></div>
+
+<p class="quote reveal delay3">
+لكِ مكانة لا أريد أن أعبّر عنها بالكلام فقط،
+بل بطريقة تعاملي أيضًا.
+</p>
+
+<button class="btn" onclick="go(4)">
+تابعي ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة الخامسة: صور هيلو كيتي -->
+
+<section class="page bg5">
+<div class="glass">
+
+<div class="kicker reveal">
+04 · ركن صغير لكِ
+</div>
+
+<h2 class="reveal delay1">
+عالم هيلو كيتي 🎀
+</h2>
+
+<p class="reveal delay2">
+ست صور صغيرة، اخترت أن أجعلها جزءًا من هذه المفاجأة.
+ضعي صورك في الملفات بالأسماء المكتوبة تحت كل إطار.
+</p>
+
+<div class="gallery reveal delay3">
+
+<div class="photo">
+<img src="Kitty1.png" alt="Hello Kitty 1">
+</div>
+
+<div class="photo">
+<img src="Kitty2.png" alt="Hello Kitty 2">
+</div>
+
+<div class="photo">
+<img src="Kitty3.png" alt="Hello Kitty 3">
+</div>
+
+<div class="photo">
+<img src="Kitty4.png" alt="Hello Kitty 4">
+</div>
+
+<div class="photo">
+<img src="Kitty5.png" alt="Hello Kitty 5">
+</div>
+
+<div class="photo">
+<img src="Kitty6.png" alt="Hello Kitty 6">
+</div>
+
+</div>
+
+<p class="small reveal delay3">
+إذا لم تظهر الصور، تأكدي أن أسماء الملفات مطابقة تمامًا وأنها بجانب index.html.
+</p>
+
+<button class="btn" onclick="go(5)">
+تابعي ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة السادسة -->
+
+<section class="page bg6">
+<div class="glass">
+
+<div class="kicker reveal">
+05 · ما أريد تغييره
+</div>
+
+<h2 class="reveal delay1">
+الاعتذار وحده لا يكفي
+</h2>
+
+<p class="reveal delay2">
+لا أريد أن أطلب منك أن تنسي ما حدث ثم أكرر التصرف نفسه.
+أريد أن أغيّر الطريقة التي أتعامل بها مع وقتك وانتظارك.
+</p>
+
+<div class="note reveal delay2">
+
+<p>
+<strong>ما سأحاول الالتزام به:</strong>
+</p>
+
+<p>
+♡ لن أطلب منك الانتظار إذا لم أكن متأكدًا أنني متاح.
+</p>
+
+<p>
+♡ إذا كنت متعبًا، سأقول لك ذلك بوضوح قبل أن تنتظريني.
+</p>
+
+<p>
+♡ لن أعدك بوقت لا أستطيع احترامه، وإذا تأخرت سأخبرك بدل الاختفاء.
+</p>
+
+<p>
+♡ سأجعل أفعالي تثبت أن كلامي ليس مجرد لحظة ندم.
+</p>
+
+</div>
+
+<p class="small reveal delay3">
+هذه ليست وعودًا مثالية؛ إنها مسؤولية سأحاسب نفسي عليها.
+</p>
+
+<button class="btn" onclick="go(6)">
+تابعي ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة السابعة -->
+
+<section class="page bg7">
+<div class="glass">
+
+<div class="kicker reveal">
+06 · رسالة من القلب
+</div>
+
+<h2 class="reveal delay1">
+افتحي الرسالة يا رانيا
+</h2>
+
+<div class="letter reveal delay2">
+
+<p>
+رانيا الغالية،
+</p>
+
+<p>
+أعرف أن الانتظار ليس أمرًا بسيطًا، خصوصًا حين يتكرر.
+وربما لم يكن أكثر ما أزعجك هو نومي بحد ذاته،
+بل شعورك بأنك تنتظرين شخصًا قال إنه سيعود إليك ثم لم يفعل.
+</p>
+
+<p>
+أنا آسف لأنني وضعتك في هذا الموقف.
+لا أريد أن أطلب منك أن تتجاوزي الأمر بسرعة،
+ولا أن تشعري أنك مطالبة بمسامحتي الآن.
+من حقك أن تنزعجي، ومن حقك أن تحتاجي وقتًا.
+</p>
+
+<p>
+كل ما أرجوه أن تصلك حقيقة واحدة:
+أنتِ مهمة عندي، وكان يجب أن أتصرف بما يليق بهذه المكانة.
+أتمنى أن أكون أهدأ وأكثر وفاءً بوعودي،
+وأن تشعري بالأمان في كلامي لأنك ترين صدقه في أفعالي.
+</p>
+
+<p>
+سامحيني إن استطعتِ، وخذي وقتك إن احتجتِ إليه.
+</p>
+
+<p style="text-align:left">
+من قلب يتمنى لكِ الخير دائمًا 🤍
+</p>
+
+</div>
+
+<button class="btn" onclick="go(7)">
+آخر مفاجأة ←
+</button>
+
+</div>
+</section>
+
+<!-- الصفحة الثامنة والأخيرة -->
+
+<section class="page bg8">
+<div class="glass">
+
+<div class="kicker reveal">
+07 · النهاية التي أتمنى أن تكون بداية
+</div>
+
+<h2 class="reveal delay1">
+لا أطلب جوابًا الآن
+</h2>
+
+<p class="lead reveal delay2">
+أريد فقط أن تعرفي أن اعتذاري ليس محاولة لإسكات زعلك،
+بل اعتراف بأنني قصّرت مع إنسانة عزيزة عليّ.
+</p>
+
+<p class="reveal delay2">
+إذا ابتسمتِ ولو قليلًا، فهذا يسعدني.
+وإذا لم تكوني مستعدة للكلام، فسأحترم ذلك أيضًا.
+</p>
+
+<button class="btn reveal delay3" onclick="revealFinal()">
+اضغطي هنا من فضلك 🎀
+</button>
+
+<div id="finalMessage" class="hidden">
+
+<div class="divider"></div>
+
+رانيا… أنتِ غالية، ووقتك غالٍ،
+وانتظارك ليس شيئًا أستهين به.
+<br>
+آسف لأنني جعلتك تنتظرين. 🤍
+
+</div>
+
+<p class="small reveal delay3">
+— صُنعت هذه الصفحة لكِ، لا لتُلزمكِ بالمسامحة،
+بل لتقول لكِ إنني فهمت خطئي.
+</p>
+
+</div>
+</section>
+
+</main>
+
+<!-- أزرار التنقل -->
+
+<div class="nav">
+
+<button id="next" aria-label="الصفحة التالية" onclick="go(current+1)">
+←
+</button>
+
+<span id="counter">1 / 8</span>
+
+<button id="prev" aria-label="الصفحة السابقة" onclick="go(current-1)">
+→
+</button>
+
+</div>
+
+<script>
+
+const world = document.getElementById('world');
+
+const pages = [...document.querySelectorAll('.page')];
+
+const counter = document.getElementById('counter');
+
+const progress = document.getElementById('progress');
+
+const next = document.getElementById('next');
+
+const prev = document.getElementById('prev');
+
+const music = document.getElementById('music');
+
+let current = 0;
+
+/* الانتقال بين الصفحات */
+
+function go(index) {
+
+    current = Math.max(0, Math.min(pages.length - 1, index));
+
+    world.scrollTo({
+        left: current * world.clientWidth,
+        behavior: 'smooth'
+    });
+
+    pages.forEach((p, i) => {
+        p.classList.toggle('active', i === current);
+    });
+
+    counter.textContent = (current + 1) + ' / ' + pages.length;
+
+    progress.style.width = ((current + 1) / pages.length * 100) + '%';
+
+    next.disabled = current === pages.length - 1;
+
+    prev.disabled = current === 0;
+}
+
+/* تشغيل الموسيقى */
+
+function startMusic() {
+
+    music.volume = .35;
+
+    music.play().then(() => {
+
+        document.getElementById('musicBtn').textContent = '♫ الموسيقى تعمل';
+
+    }).catch(() => {});
+
+}
+
+document.getElementById('musicBtn').addEventListener('click', () => {
+
+    if (music.paused) {
+
+        startMusic();
+
+    } else {
+
+        music.pause();
+
+        document.getElementById('musicBtn').textContent = '♫ تشغيل الموسيقى';
+
+    }
+
+});
+
+/* المفاجأة الأخيرة */
+
+function revealFinal() {
+
+    document.getElementById('finalMessage').classList.remove('hidden');
+
+    burst(innerWidth / 2, innerHeight / 2);
+
+}
+
+/* تأثير اللمعات */
+
+function burst(x, y) {
+
+    for (let i = 0; i < 14; i++) {
+
+        let s = document.createElement('span');
+
+        s.className = 'spark';
+
+        s.textContent = ['♡', '✦', '🎀', '♥'][i % 4];
+
+        s.style.left = x + 'px';
+
+        s.style.top = y + 'px';
+
+        s.style.setProperty('--x', (Math.random() * 260 - 130) + 'px');
+
+        s.style.setProperty('--y', (Math.random() * -220 - 20) + 'px');
+
+        document.body.appendChild(s);
+
+        setTimeout(() => s.remove(), 950);
+
+    }
+
+}
+
+/* اللمعات عند الضغط */
+
+document.addEventListener('click', e => {
+
+    if (e.target.closest('button')) {
+
+        burst(e.clientX, e.clientY);
+
+    }
+
+});
+
+/* القلوب العائمة */
+
+const heartHost = document.getElementById('hearts');
+
+function makeHeart() {
+
+    let h = document.createElement('span');
+
+    h.className = 'heart';
+
+    h.textContent = ['♡', '♥', '✧'][Math.floor(Math.random() * 3)];
+
+    h.style.left = Math.random() * 100 + '%';
+
+    h.style.fontSize = (12 + Math.random() * 20) + 'px';
+
+    h.style.animationDuration = (7 + Math.random() * 8) + 's';
+
+    heartHost.appendChild(h);
+
+    setTimeout(() => h.remove(), 16000);
+
+}
+
+setInterval(makeHeart, 850);
+
+/* التنقل باستخدام لوحة المفاتيح */
+
+document.addEventListener('keydown', e => {
+
+    if (e.key === 'ArrowLeft') {
+        go(current + 1);
+    }
+
+    if (e.key === 'ArrowRight') {
+        go(current - 1);
+    }
+
+});
+
+/* البداية */
+
+go(0);
+
+</script>
+
+</body>
+</html>
